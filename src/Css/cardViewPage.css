@@ -1,0 +1,87 @@
+.body{
+    background-image: linear-gradient(to bottom right, #fbc2eb 0%, #a6c1ee 100%);
+    height: auto;
+    background-attachment: local;
+    background-size: cover;        
+}
+
+.heading-tag{
+    padding: 10px;
+    text-align: center;
+}
+
+.container{
+display: flex;
+flex-direction: column;
+margin-left:unset;
+}
+
+.cardContainer{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-left: unset;
+    /* width: 100%; */
+
+}
+
+.date{
+    display: flex;
+ height: 100px;
+ width: 190px;
+ font-weight: bold;
+ border: black ;
+ border-style: solid 0px;
+ border-radius: 5px;
+ background-color: rgb(119, 145, 201);
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ flex-grow: 1;
+}
+
+.font-style{
+font-weight: bold;
+}
+
+.data-field{
+    margin-left: 20px;
+    height: 100px;
+    width: 800px;
+    border: black;
+    border-style: solid 0px;
+    border-color: rgb(14, 9, 9);
+    border-radius: 5px;
+    flex-grow: 4;
+    background-color: rgb(219, 34, 96);
+}
+.date:hover{
+    height: 105px;
+ width: 200px;
+ 
+
+}
+.data-field:hover{
+    height: 105px;
+    width: 810px;
+}
+.image-div{
+    height: 100px;
+    width: 100px;
+    margin-left: 10px;
+    border: black;
+    border-style: solid 0px;
+    border-radius: 5px;
+    flex-grow: 1;
+}
+
+.image-div:hover{
+    height: 105px;
+    width: 110px;  
+}
+
+.btn-add{
+    display: flex;
+    justify-content:flex-end;
+    margin-right: 20px;
+}

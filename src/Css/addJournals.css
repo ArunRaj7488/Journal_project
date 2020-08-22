@@ -1,0 +1,22 @@
+
+.container{
+
+    margin: 20px;
+    height: 100vh;
+    width: 600px;
+    margin-left: 20px;
+}
+
+.form-group{
+display: flex;
+/* justify-self: center; */ 
+width: 800px;
+}
+.label{
+    flex-grow: 1;
+}
+.input{
+     margin-left: 50px;
+     flex-grow: 4;
+     width: 500px;
+}
