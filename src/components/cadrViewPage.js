@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import moment from "moment";
 import "../Css/cardViewPage.css";
 import _ from "loadsh";
+import JournalViewPage from './JournalViewPage'
+import { Link } from 'react-router-dom';
 
 class CardViewPage extends Component {
   constructor(props) {
@@ -26,14 +28,14 @@ class CardViewPage extends Component {
       this.setState({ JournalData: Journal });
 
     }
-
-
-    console.log(
-      "data",
-      this.state.JournalData,
-      Array.isArray(this.state.JournalData)
-    );
   }
+
+  detailViewPage = (data) => {
+
+    console.log("function",data);
+    return <JournalViewPage />     
+  }
+
 
   render() {
     return (
@@ -58,6 +60,11 @@ class CardViewPage extends Component {
                     {moment(journal && journal.newDate).format("DD-MMM-YYYY")}
                   </h5>
                 </div>
+                <Link  to={{
+                pathname: `/journal-details/${journal.id}`, 
+                journalData:{data: journal}
+                }}>
+              {/* <a href="/journal-details"> */}
                 <div className="data-field">
                   <h1 key={journal && journal.headLine} className="headline">
                     {journal && journal.headLine}
@@ -66,6 +73,9 @@ class CardViewPage extends Component {
                     {journal && journal.description}
                   </p>
                 </div>
+                {/* { this.detailViewPage(journal)} */}
+                {/* </a> */}
+                </Link>
                 <div className="image-div">
                   <img
                     src="http://picsum.photos/100/100"

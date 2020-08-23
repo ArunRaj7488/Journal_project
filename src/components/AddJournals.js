@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import "../../src/Css/addJournals.css";
+import _ from "loadsh";
+
 
 class AddJournals extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // formData: {
+       formData: {},
         id: '',
       headLine: "",
       description: "",
       newDate: "",
       image: [null],
-
-      // },
     };
   }
 
@@ -42,15 +42,36 @@ class AddJournals extends Component {
         return;
       }
       let previousData = [];
-
+      let dataObject ={}
       previousData = JSON.parse(localStorage.getItem("journalData"));
 
-      let dataObject = {
+      console.log(this.state.id)
+      if(this.state.id){
+        previousData.forEach((item, i) => {
+          if(this.state.id === item.id){
+            let { id,headLine, description, newDate} = item;
+            _.remove(previousData, (data)=> {
+                return data.id === this.state.id;
+            });
+                        console.log(id,headLine, description, newDate);
+            id = this.state.id;
+            headLine = this.state.headLine;
+            description = this.state.description;
+            newDate = this.state.newDate;
+            dataObject = {
+                id, headLine, description, newDate
+            }; 
+        }
+        })
+        
+      }else{
+       dataObject = {
         id: previousData ? previousData.length + 1 : 1,
         headLine: this.state.headLine,
         description: this.state.description,
         newDate: this.state.newDate,
       };
+    }
 
       console.log(previousData, dataObject );
       // let previousData = [];
@@ -84,7 +105,20 @@ class AddJournals extends Component {
     }
   };
 
+  componentWillMount(){
+    console.log("props",this.props);
+    let obj ={}
+    if(this.props.location.journal){
+     let {data}  = this.props.location.journal
+     obj = data
+    }
+     this.setState({formData: obj})
+     this.setState({id: obj.id})
+    
+  }
+
   render() {
+    let journalObj = this.state.formData;
     return (
       <div className="container">
         <h3>Add Journal Form</h3>
@@ -95,6 +129,7 @@ class AddJournals extends Component {
               required
               className="input"
               name="headLine"
+              defaultValue={journalObj.headLine}
               type="text"
               placeholder="Enter Head Line"
               onChange={(e) => this.handleChange(e)}
@@ -107,6 +142,7 @@ class AddJournals extends Component {
               className="input"
               rows="4"
               name="description"
+              defaultValue={journalObj.description}
               type="textarea"
               placeholder="Enter Description"
               onChange={(e) => this.handleChange(e)}
@@ -119,6 +155,8 @@ class AddJournals extends Component {
               className="input"
               style={{}}
               name="newDate"
+              defaultValue={journalObj.newDate}
+
               type="date"
               placeholder="Enter Date"
               onChange={(e) => this.handleChange(e)}
