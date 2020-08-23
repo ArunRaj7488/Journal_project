@@ -24,9 +24,6 @@ class CardViewPage extends Component {
     let Journal = JSON.parse(localStorage.getItem("journalData"));
     let sortData = [];
     //sort date by date
-    // if(this.state.searchDate &&){
-    //   Journal.map
-    // }
     if (Journal && Journal.length > 1) {
       if (this.state.searchDate) {
         let searchData = [];
